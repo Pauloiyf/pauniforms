@@ -1,0 +1,356 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+      
+      <!-- Navigation -->
+      <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-xl">UG</span>
+              </div>
+              <div>
+                <h1 class="text-xl font-bold text-gray-800">UniformGuard</h1>
+                <p class="text-xs text-gray-600">Professional Uniforms</p>
+              </div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+              <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Services</a>
+              <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Testimonials</a>
+              <a href="#partners" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Partners</a>
+              <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Contact</a>
+            </div>
+            <button class="md:hidden p-2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section with Image Slider -->
+      <section class="pt-20 min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <div class="relative w-full h-full">
+            <div 
+              *ngFor="let slide of heroSlides; let i = index" 
+              class="absolute inset-0 transition-opacity duration-1000"
+              [class.opacity-100]="currentSlide === i"
+              [class.opacity-0]="currentSlide !== i">
+              <img [src]="slide.image" [alt]="slide.alt" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="max-w-4xl">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Professional
+              <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+                Uniforms
+              </span>
+              <span class="block text-4xl md:text-5xl">for Every Mission</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl leading-relaxed">
+              Trusted by schools, security forces, and armed services worldwide. 
+              We deliver quality, durability, and professional excellence in every stitch.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                Get Quote Now
+              </button>
+              <button class="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
+                View Catalog
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+          <!--<button *ngFor="let slide of heroSlides; let i = index"
+            (click)="setCurrentSlide(i)"
+            class="w-3 h-3 rounded-full transition-all duration-300"
+            [class.bg-white]="currentSlide === i"
+            [class.bg-white/50]="currentSlide !== i">
+
+          </button>-->
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Specializations</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              From educational institutions to defense forces, we provide premium uniforms 
+              tailored to meet the unique demands of each sector.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div *ngFor="let service of services" class="group">
+              <div class="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span class="text-2xl">{{ service.icon }}</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ service.title }}</h3>
+                <p class="text-gray-600 leading-relaxed">{{ service.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+            <p class="text-xl text-gray-600">Trusted by thousands of satisfied customers worldwide</p>
+          </div>
+          
+          <div class="relative max-w-4xl mx-auto">
+            <div class="overflow-hidden rounded-2xl">
+              <div 
+                class="flex transition-transform duration-500 ease-in-out"
+                [style.transform]="'translateX(-' + (currentTestimonial * 100) + '%)'">
+                <div *ngFor="let testimonial of testimonials" class="w-full flex-shrink-0">
+                  <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl mx-4">
+                    <div class="flex items-center mb-6">
+                      <img [src]="testimonial.image" [alt]="testimonial.name" class="w-16 h-16 rounded-full object-cover mr-4">
+                      <div>
+                        <h4 class="text-xl font-bold text-gray-900">{{ testimonial.name }}</h4>
+                        <p class="text-gray-600">{{ testimonial.role }} at {{ testimonial.company }}</p>
+                      </div>
+                      <div class="ml-auto flex">
+                        <span *ngFor="let star of getStars(testimonial.rating)" class="text-yellow-400 text-xl">★</span>
+                      </div>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed italic">"{{ testimonial.content }}"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Testimonial Navigation -->
+            <div class="flex justify-center mt-8 space-x-3">
+              <button 
+                *ngFor="let testimonial of testimonials; let i = index"
+                (click)="setCurrentTestimonial(i)"
+                class="w-3 h-3 rounded-full transition-all duration-300"
+                [class.bg-blue-600]="currentTestimonial === i"
+                [class.bg-gray-300]="currentTestimonial !== i">
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partners Section -->
+      <section id="partners" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Trusted Partners</h2>
+            <p class="text-xl text-gray-600">Working with leading institutions and organizations</p>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+            <div *ngFor="let partner of partners" class="group">
+              <div class="bg-gray-50 p-6 rounded-xl hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center h-24">
+                <img [src]="partner.logo" [alt]="partner.name" class="max-h-12 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form Section -->
+      <section id="contact" class="py-20 bg-gradient-to-br from-slate-900 to-blue-900">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Contact Info -->
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Get In Touch</h2>
+              <p class="text-xl text-gray-300 mb-8">
+                Ready to outfit your team with professional uniforms? 
+                Contact us today for a personalized consultation.
+              </p>
+              
+              <div class="space-y-6">
+                <div class="flex items-center space-x-4">
+                  <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white text-xl">📍</span>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-semibold">Address</h4>
+                    <p class="text-gray-300">123 Industrial Way, Nairobi, Kenya</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                  <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white text-xl">📞</span>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-semibold">Phone</h4>
+                    <p class="text-gray-300">+254 700 123 456</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                  <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white text-xl">✉️</span>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-semibold">Email</h4>
+                    <p class="text-gray-300">info-at-uniformguard.com</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Media Links -->
+              <div class="mt-8">
+                <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                  <a href="#" class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
+                    <span class="text-white text-xl">f</span>
+                  </a>
+                  <a href="#" class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
+                    <span class="text-white text-xl">𝕏</span>
+                  </a>
+                  <a href="#" class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
+                    <span class="text-white text-xl">in</span>
+                  </a>
+                  <a href="#" class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
+                    <span class="text-white text-xl">📧</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20">
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label class="block text-white font-semibold mb-2">First Name</label>
+                    <input 
+                      type="text" 
+                      formControlName="firstName"
+                      class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 focus:bg-white/30 transition-all duration-300"
+                      placeholder="John">
+                  </div>
+                  <div>
+                    <label class="block text-white font-semibold mb-2">Last Name</label>
+                    <input 
+                      type="text" 
+                      formControlName="lastName"
+                      class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 focus:bg-white/30 transition-all duration-300"
+                      placeholder="Doe">
+                  </div>
+                </div>
+                
+                <div class="mb-6">
+                  <label class="block text-white font-semibold mb-2">Email</label>
+                  <input 
+                    type="email" 
+                    formControlName="email"
+                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 focus:bg-white/30 transition-all duration-300"
+                    placeholder="john-at-example.com">
+                </div>
+                
+                <div class="mb-6">
+                  <label class="block text-white font-semibold mb-2">Organization Type</label>
+                  <select 
+                    formControlName="organizationType"
+                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:border-blue-400 focus:bg-white/30 transition-all duration-300">
+                    <option value="" class="text-gray-900">Select type...</option>
+                    <option value="school" class="text-gray-900">School/Educational Institution</option>
+                    <option value="security" class="text-gray-900">Security Company</option>
+                    <option value="military" class="text-gray-900">Armed Forces</option>
+                    <option value="corporate" class="text-gray-900">Corporate</option>
+                    <option value="other" class="text-gray-900">Other</option>
+                  </select>
+                </div>
+                
+                <div class="mb-6">
+                  <label class="block text-white font-semibold mb-2">Message</label>
+                  <textarea 
+                    formControlName="message"
+                    rows="4"
+                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 focus:bg-white/30 transition-all duration-300 resize-none"
+                    placeholder="Tell us about your uniform requirements..."></textarea>
+                </div>
+                
+                <button 
+                  type="submit"
+                  [disabled]="!contactForm.valid || isSubmitting"
+                  class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-300 shadow-lg">
+                  {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div class="flex items-center space-x-3 mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                  <span class="text-white font-bold text-xl">UG</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold">UniformGuard</h3>
+                  <p class="text-sm text-gray-400">Professional Uniforms</p>
+                </div>
+              </div>
+              <p class="text-gray-400">
+                Leading provider of high-quality uniforms for educational institutions, 
+                security forces, and armed services.
+              </p>
+            </div>
+            
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Services</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white transition-colors">School Uniforms</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Security Uniforms</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Military Uniforms</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Custom Design</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Catalog</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Quality Standards</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+              <div class="space-y-2 text-gray-400">
+                <p>123 Industrial Way</p>
+                <p>Nairobi, Kenya</p>
+                <p>+254 700 123 456</p>
+                <p>info-at-uniformguard.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 UniformGuard. All rights reserved. | Privacy Policy | Terms of Service</p>
+          </div>
+        </div>
+      </footer>
+    </div>
